@@ -1,2 +1,11 @@
 title: Bunny's Town
 description: Privacy Policy and Legal Documents
+url: "https://bunnystown.github.io"
+baseurl: ""
+include:
+  - .well-known
+plugins:
+  - jekyll-sitemap
+defaults:
+  - scope: { path: "pd-assets/**" }
+    values: { sitemap: false }
