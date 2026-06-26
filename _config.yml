@@ -9,3 +9,5 @@ plugins:
 defaults:
   - scope: { path: "pd-assets/**" }
     values: { sitemap: false }
+  - scope: { path: "cp-assets/**" }
+    values: { sitemap: false }

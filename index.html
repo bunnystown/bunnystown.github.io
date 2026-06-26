@@ -180,9 +180,29 @@
   }
   .freebie .pic{position:relative; aspect-ratio:4/3; overflow:hidden;}
   .freebie .pic img{width:100%; height:100%; object-fit:cover; display:block;}
+  .freebie .pic.ctop img{object-position:50% 16%;}   /* 竖向涂色页预览:顶部对齐,保留彩色参照+头部 */
   .freebie .txt{padding:30px 34px 30px 4px;}
   .freebie .eyebrow{margin-top:0;}
   .freebie p{color:var(--muted); margin:.4em 0 1.1em;}
+
+  /* two gift cards side by side */
+  .gifts{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:24px;
+    max-width:1000px; margin:34px auto 0;
+  }
+  .gift{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    overflow:hidden; box-shadow:0 8px 30px rgba(94,67,52,.10);
+    display:flex; flex-direction:column;
+  }
+  .gift .pic{position:relative; aspect-ratio:4/3; overflow:hidden;}
+  .gift .pic img{width:100%; height:100%; object-fit:cover; display:block;}
+  .gift .pic.ctop img{object-position:50% 16%;}   /* 竖向涂色页预览:顶部对齐,保留彩色参照+头部 */
+  .gift .body{padding:22px 24px 26px; text-align:center; display:flex; flex-direction:column; flex:1;}
+  .gift .eyebrow{margin:0 0 .5em;}
+  .gift h3{font-size:1.3rem; margin:.1em 0 .4em;}
+  .gift p{color:var(--muted); font-size:.96rem; margin:0 0 1.2em;}
+  .gift .btn{margin-top:auto; align-self:center;}
 
   /* download / app block */
   .app{
@@ -231,6 +251,7 @@
     .play-grid{grid-template-columns:1fr; max-width:420px; margin-left:auto; margin-right:auto;}
     .freebie{grid-template-columns:1fr;}
     .freebie .txt{padding:6px 26px 30px;}
+    .gifts{grid-template-columns:1fr; max-width:420px;}
     .cta-row{flex-direction:column;}
     .cta-row .btn, .cta-row .btn-ghost{width:100%; max-width:320px;}
     /* phones can't scan their own screen → hide QR, make the whole bar an App Store link */
@@ -261,7 +282,10 @@
     <p class="sub">A cozy watercolor-style pretend-play town for kids 3&ndash;8 &mdash; explore little homes, bake, garden, and dress up sweet animal families.</p>
     <div class="cta-row">
       <a class="btn" href="https://apps.apple.com/us/app/bunnys-town-kids-play-home/id6776526277">Download on the App Store</a>
-      <a class="btn-ghost" href="./paper-dolls">Free paper dolls</a>
+    </div>
+    <div class="cta-row" style="margin-top:12px;">
+      <a class="btn-ghost" href="./paper-dolls">&#9986;&#65039; Free paper dolls</a>
+      <a class="btn-ghost" href="./coloring-pages">&#127912; Free coloring pages</a>
     </div>
     <div class="trust">
       <span>&#10024; No ads</span>
@@ -384,22 +408,45 @@
   </div>
 </section>
 
-<!-- ============ A LITTLE GIFT (FREEBIE) ============ -->
-<section class="tint">
+<!-- ============ A LITTLE GIFT (FREEBIES) ============ -->
+<section class="tint" id="printables">
   <div class="wrap">
-    <div class="freebie reveal">
-      <div class="pic">
-        <picture>
-          <source srcset="pd-assets/img/family-bunny.webp" type="image/webp">
-          <img src="pd-assets/img/family-bunny.jpg" alt="Watercolor-style printable paper dolls of the bunny family with outfits to cut out" width="1000" height="707" loading="lazy" decoding="async">
-        </picture>
-      </div>
-      <div class="txt">
-        <span class="eyebrow">A Little Gift</span>
-        <h2>Free printable paper dolls</h2>
-        <p>Bring the town home with a screen-free afternoon &mdash; print, cut, and dress up four watercolor-style animal families. Free to download, no sign-up.</p>
-        <a class="btn" href="./paper-dolls">Get the free paper dolls</a>
-      </div>
+    <div class="center narrow reveal">
+      <span class="eyebrow">A Little Gift</span>
+      <h2>Free printables to bring the town home</h2>
+      <p class="lede">Two screen-free afternoons on us &mdash; print at home, no sign-up, no email, no data collected.</p>
+    </div>
+
+    <div class="gifts">
+      <article class="gift reveal">
+        <div class="pic">
+          <picture>
+            <source srcset="pd-assets/img/family-bunny.webp" type="image/webp">
+            <img src="pd-assets/img/family-bunny.jpg" alt="Watercolor-style printable paper dolls of the bunny family with outfits to cut out" width="1000" height="707" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="body">
+          <span class="eyebrow">Paper Dolls</span>
+          <h3>Printable paper dolls</h3>
+          <p>Print, cut, and dress up four watercolor-style animal families.</p>
+          <a class="btn" href="./paper-dolls">Get the paper dolls</a>
+        </div>
+      </article>
+
+      <article class="gift reveal">
+        <div class="pic ctop">
+          <picture>
+            <source srcset="cp-assets/img/family-bunny.webp" type="image/webp">
+            <img src="cp-assets/img/family-bunny.jpg" alt="Printable bunny coloring page line art with watercolor color ideas to color in" width="700" height="990" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="body">
+          <span class="eyebrow">Coloring Pages</span>
+          <h3>Printable coloring pages</h3>
+          <p>Print and color the same sweet animal families, with color ideas to copy or invent.</p>
+          <a class="btn" href="./coloring-pages">Get the coloring pages</a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -433,6 +480,7 @@
     <p class="flinks center">
       <a href="./privacy.html">Privacy Policy</a> &middot;
       <a href="./paper-dolls">Free Paper Dolls</a> &middot;
+      <a href="./coloring-pages">Free Coloring Pages</a> &middot;
       <a href="mailto:projectbunnytown@gmail.com">Contact</a>
     </p>
     <p class="center" style="margin-top:14px;">&copy; 2026 Project Bunny Town &middot; a watercolor-style pretend-play town for kids 3&ndash;8</p>
